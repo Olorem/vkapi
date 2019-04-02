@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Random photo</title>
+</head>
+<!-- https://oauth.vk.com/blank.html#access_token=3551dd637fe2c6a7741d4734b02d399b3d6e214345f019b5006431134479c0dfb4b4fefb07a2436896b97&expires_in=86400&user_id=211756667 -->
+<body>
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+	<!-- <script src="app.js"></script> -->
+	
+	<!-- <iframe src="https://vk.com/app?id=6911006" width="1000px" height="600px" frameborder="0"> -->
+		<!-- <script> -->
+<!-- 			// var script = document.createElement('script');
+			// script.src = "https://api.vk.com/method/users.get&user_ids=ignatuy&fields=photo_50&v=5.67&callback=callbackFunc";
+			// document.getElementsByTagName('head')[0].appendChild(script);
+			// function callbackFunc(data){
+			// 	alert(result);
+			// }; -->
+
+
+
+		
+			<script type="text/javascript"> 
+				VK.init(function() { 
+					console.log(1);
+				}, function() { 
+					console.log(0);
+					}, '5.92');
+			var url = `http://api.vk.com/method/` + 
+			`users.get` + 
+			`?user_ids=ignatuy&fields=photo_50,city`+
+			`&access_token=09306db938969a390a4b5c3e7837a67a6a71253f6d5a6aac0669ce1297179194c5c7917d488059bff9c51&v=5.92`+
+			`&callback=Func`;
+
+			/* https://oauth.vk.com/blank.html#
+			access_token=09306db938969a390a4b5c3e7837a67a6a71253f6d5a6aac0669ce1297179194c5c7917d488059bff9c51&
+			expires_in=86400&
+			user_id=211756667*/
+
+			var xhr = new XMLHttpRequest();
+			xhr.withCredentials = true;
+			xhr.open('POST', url, true);
+			xhr.send();
+
+				console.log(JSON.parse(xhr.responseText))
+			</script>
+
+
+
+			<!-- /* function Func(data){
+				console.log(data);
+			}
+
+			var url = `http://api.vk.com/method/` + 
+			`users.get` + 
+			`?user_ids=ignatuy&fields=photo_50,city`+
+			`&access_token=3551dd637fe2c6a7741d4734b02d399b3d6e214345f019b5006431134479c0dfb4b4fefb07a2436896b97&v=5.92`+
+			`&callback=Func`;
+
+
+
+			var xhr = new XMLHttpRequest();
+			xhr.withCredentials = true;
+			xhr.open('POST', url, true);
+			xhr.send();
+
+				console.log(JSON.parse(xhr.responseText))
+			// 	console.log(VK);
+			// 	parent.name = "fXD981"
+			// 	console.log(window.level);
+
+			// VK.init(() => console.log('success'), () => console.log('failure'));
+			//arr = users.get("ignatuy", photo_50);
+			//	console.log(arr)*/
+			console.log(1); -->
+		<!-- </script> -->
+	<!-- </iframe> -->
+</body>
+</html>
