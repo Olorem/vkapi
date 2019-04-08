@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Random photo</title>
+	<script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+	<link rel="stylesheet" href="com.css">
+</head>
+<body>
+	<a id="or"href="https://oauth.vk.com/authorize?client_id=6926587&display=page&redirect_uri=https://olorem.github.io/vkapi/vkapi.html&scope=30&response_type=token&v=5.92&state=1">
+		Click here first
+	</a>
+	<div class="one" id="1"></div>
+	<script type="text/javascript">
+		var usr, 
+		    tkn = document.URL.substr(document.URL.lastIndexOf('access_token'), document.URL.indexOf('&', document.URL.lastIndexOf('access_token') + 1) - document.URL.lastIndexOf('access_token')).substr(13);
+			// tkn - access_token from url after redirecting
+		window.name = 'fXD';
+		var resp;
+		VK.UI.button(document.getElementById('1'));
+		// Functions
+		cbFunc = (args) => { console.log(args) };
+		lgin = () => {
+			VK.Auth.login(function(response) {
+				console.log(response)
+			}); 
+		};
+		
+		openAlb = function(){
+			VK.Api.call('photos.get', {
+				owner_id: usr.id, 
+				album_id: this.id > 0 ? this.id : "saved", 
+				count: 1000, 
+				v: "5.92"
+				}, 
+				(r) => {
+						console.log(r);
+					document.body.innerHTML = "";
+					var but = document.createElement('button');
+					but.classList.add('but');
+					but.textContent = 'Get random!';
+					but.onclick = getRand;
+					document.body.appendChild(but);
+					resp = r;
+				}
+			);
+		};
+		getRand = function(){
+			var rand = Math.floor(Math.random() * resp.response.items.length);
+			var qrstr = usr.id + '_' + resp.response.items[rand].id;
+				console.log(qrstr);
+			VK.Api.call('photos.getById', { photos: qrstr, v: "5.92"}, (r) => { 
+					console.log(r);
+				let el = document.createElement('img');
+				el.style.width = "400px";
+				el.style.height = "auto";
+				el.style.float = "left";
+				el.style.marginTop = "10px";
+				let anc = "";
+					console.log(r.response[0].sizes[r.response[0].sizes.length-1].url);
+				anc = r.response[0].sizes[r.response[0].sizes.length-1].url;
+				el.src = anc;
+				document.body.appendChild(el);
+				document.body.appendChild(document.createElement('br'));
+			});
+		};
+		// Code
+		VK.init({
+			appId: 6926587,
+			status: 1
+		});
+		document.getElementById('1').onclick = lgin;
+		VK._apiId = 6926587;
+		
+		VK.Observer.subscribe("auth.login", function f()
+		{
+			usr = VK._session.user;
+			VK.Api.call('users.get', {user_ids: VK._session.user.id, v:"5.92"}, function(r) {
+  				if(r.response) {
+    					alert('Привет, ' + r.response[0].first_name);
+					console.log(r);
+  				}
+			});
+			VK.Api.call('photos.getAlbums', {owner_id: usr.id, need_system: 1, v:"5.92"}, (r) => {
+				for(let i = 1; i < r.response.count; i++){
+					let el = document.createElement('div');
+					el.innerHTML = r.response.items[i].title;
+					el.id = r.response.items[i].id;
+					el.classList.add('alb');
+					el.onclick = openAlb;
+					document.body.appendChild(el);
+				};
+			});
+			document.querySelector('#or').style.display = "none";
+			document.querySelector('.one').style.display = "none";
+		});
+		
+	</script>
+</body>
+</html>
