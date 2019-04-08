@@ -41,28 +41,32 @@
 					but.classList.add('but');
 					but.textContent = 'Get random!';
 					but.onclick = getRand;
+					var dv = document.createElement('div');
+						dv.classList.add('phtwrap');
 					document.body.appendChild(but);
+					document.body.appendChild(document.createElement('br'));
+					document.body.appendChild(dv);
 					resp = r;
 				}
 			);
 		};
 		getRand = function(){
+			document.querySelector('.but').onclick = null;
 			var rand = Math.floor(Math.random() * resp.response.items.length);
 			var qrstr = usr.id + '_' + resp.response.items[rand].id;
+			var dvphtwrap = document.querySelector('.phtwrap');
 				console.log(qrstr);
 			VK.Api.call('photos.getById', { photos: qrstr, v: "5.92"}, (r) => { 
 					console.log(r);
 				let el = document.createElement('img');
-				el.style.width = "400px";
-				el.style.height = "auto";
-				el.style.float = "left";
-				el.style.marginTop = "10px";
+				el.classList.add('pht');
 				let anc = "";
 					console.log(r.response[0].sizes[r.response[0].sizes.length-1].url);
 				anc = r.response[0].sizes[r.response[0].sizes.length-1].url;
 				el.src = anc;
-				document.body.appendChild(el);
-				document.body.appendChild(document.createElement('br'));
+				dvphtwrap.innerHTML = "";
+				dvphtwrap.appendChild(el);
+				document.querySelector('.but').onclick = getRand;
 			});
 		};
 		// Code
