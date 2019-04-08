@@ -64,4 +64,6 @@ a {
   left: 0; right: 0; bottom: 0; top: 0;
   margin: auto; border-radius: 3px;
   box-shadow: 0 0 2px 1px grey;
+  max-width: 500px;
+  max-height: 500px
 }
