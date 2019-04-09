@@ -5,12 +5,13 @@
 
 .alb {
   margin-top: 5px;
+  margin-left: 10px;
   display: block;
   width: 240px;
   height: 60px;
   font-family: sans-serif;
   font-size: 16px;
-  borer-radius: 2px;
+  border-radius: 2px;
   cursor: pointer;
   color: #fff; background: #005aff;
   padding: 15px;
@@ -18,7 +19,7 @@
   box-sizing: border-box;
 }
 
-a {
+a#or {
   display: block;
   width: 150px;
   height: 50px;
@@ -44,6 +45,7 @@ a {
   font-family: sans-serif;
   box-sizing: border-box;
   border-radius: 2px;
+  border: 1px solid #228fff;
 }
 
 .but:hover{
@@ -52,11 +54,15 @@ a {
   cursor: pointer;
 }
 
-.dvphtwrap{
-  width: 500px; height: 500px;
-  left: 0; right: 0; margin: auto;
+.phtwrap{
+  max-width: 500px;
+  max-height: 500px;
+  left: 0;
+  right: 0;
+  margin: auto;
   border: 2px double lightgray;
   border-radius: 5px;
+  padding: 30px;
 }
 
 .pht{
