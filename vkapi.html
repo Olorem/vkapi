@@ -13,8 +13,7 @@
 	</a>
 	<div class="one" id="1"></div>
 	<script type="text/javascript">
-		var usr, 
-		    tkn = document.URL.substr(document.URL.lastIndexOf('access_token'), document.URL.indexOf('&', document.URL.lastIndexOf('access_token') + 1) - document.URL.lastIndexOf('access_token')).substr(13);
+		var usr;
 			// tkn - access_token from url after redirecting
 		window.name = 'fXD';
 		var resp;
@@ -44,7 +43,7 @@
 					var dv = document.createElement('div');
 						dv.classList.add('phtwrap');
 					document.body.appendChild(but);
-					document.body.appendChild(document.createElement('br'));
+					dv.style.display = "hidden";
 					document.body.appendChild(dv);
 					resp = r;
 				}
@@ -65,11 +64,16 @@
 				anc = r.response[0].sizes[r.response[0].sizes.length-1].url;
 				el.src = anc;
 				dvphtwrap.innerHTML = "";
+				dvphtwrap.style.display = "block";
 				dvphtwrap.appendChild(el);
 				document.querySelector('.but').onclick = getRand;
 			});
 		};
 		// Code
+		if (document.URL.length >= 50){
+			var tkn = document.URL.substr(document.URL.lastIndexOf('access_token'), document.URL.indexOf('&', document.URL.lastIndexOf('access_token') + 1) - document.URL.lastIndexOf('access_token')).substr(13);
+			document.getElementById('or').style.display = 'none';
+		};
 		VK.init({
 			appId: 6926587,
 			status: 1
@@ -79,7 +83,9 @@
 		
 		VK.Observer.subscribe("auth.login", function f()
 		{
+			// all stuff here
 			usr = VK._session.user;
+			VK.Api.call('stats.trackVisitor', {v: '5.92'});
 			VK.Api.call('users.get', {user_ids: VK._session.user.id, v:"5.92"}, function(r) {
   				if(r.response) {
     					alert('Привет, ' + r.response[0].first_name);
