@@ -67,8 +67,8 @@ a#or {
 }
 
 .phtwrap{
-  max-width: 90vw;
-  max-height: 70vh;
+  max-width: 95vw;
+  max-height: 85vh;
   left: 0;
   right: 0;
   margin: auto;
@@ -86,6 +86,6 @@ a#or {
   margin: auto;
   border-radius: 3px;
   box-shadow: 0 0 2px 1px grey;
-  max-width: 80vw;
-  max-height: 60vh;
+  max-width: 85vw;
+  max-height: 75vh;
 }
