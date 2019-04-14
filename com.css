@@ -68,14 +68,14 @@ a#or {
 
 .phtwrap{
   max-width: 95vw;
-  max-height: 85vh;
+  max-height: 80vh;
   left: 0;
   right: 0;
   margin: auto;
   margin-top: 1vh;
   border: 2px double lightgray;
   border-radius: 5px;
-  padding: 5vw;
+  padding: 2.5vw;
 }
 .pht{
   display: block;
