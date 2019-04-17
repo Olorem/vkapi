@@ -75,7 +75,7 @@ a#or {
   margin-top: 1vh;
   border: 2px double lightgray;
   border-radius: 5px;
-  padding: 2.5vw;
+  padding: 2vw;
 }
 .pht{
   display: block;
@@ -87,5 +87,5 @@ a#or {
   border-radius: 3px;
   box-shadow: 0 0 2px 1px grey;
   max-width: 85vw;
-  max-height: 75vh;
+  max-height: 80vh;
 }

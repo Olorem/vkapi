@@ -17,6 +17,8 @@
 			// tkn - access_token from url after redirecting
 		window.name = 'fXD';
 		var resp;
+		var ar;
+		var it = 0;
 		VK.UI.button(document.getElementById('1'));
 		// Functions
 		cbFunc = (args) => { console.log(args) };
@@ -46,12 +48,38 @@
 					dv.style.display = "none";
 					document.body.appendChild(dv);
 					resp = r;
+					ar = new Array(Math.floor(Math.sqrt(Math.abs(resp.response.items.length - 0.1)))&100);
 				}
 			);
 		};
 		getRand = function(){
 			document.querySelector('.but').onclick = null;
-			var rand = Math.floor(Math.random() * resp.response.items.length);
+			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+				document.querySelector('.phtwrap').style.padding = "4vw";
+				let elem = document.querySelector('.but');
+				elem.style.backgroundColor = "#fff";
+				elem.style.color = "#228fff";
+				setTimeout( () => {
+					elem.style.backgroundColor = "#228fff";
+					elem.style.color = "#fff";
+				}, 200);
+			};
+
+
+			// no-repeat
+			var ctrlSum = ar.length;
+			while (ctrlSum) {
+				ctrlSum = 0;
+				var rand = Math.floor(Math.random() * resp.response.items.length);
+				for(let i in ar){
+					if(ar[i] == resp.response.items[rand].id) ctrlSum++;
+				};
+			};
+			ar[it] = resp.response.items[rand].id;
+			it = (it + 1) % ar.length;
+			//
+
+			// query 
 			var qrstr = usr.id + '_' + resp.response.items[rand].id;
 			var dvphtwrap = document.querySelector('.phtwrap');
 				console.log(qrstr);
@@ -68,6 +96,7 @@
 				dvphtwrap.appendChild(el);
 				document.querySelector('.but').onclick = getRand;
 			});
+			//
 		};
 		// Code
 		if (document.URL.length >= 50){
