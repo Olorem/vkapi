@@ -39,7 +39,7 @@
 						console.log(r);
 					document.body.innerHTML = "";
 					var but = document.createElement('button');
-					but.classList.add('but');
+						but.classList.add('but');
 					but.textContent = 'Get random!';
 					but.onclick = getRand;
 					var dv = document.createElement('div');
@@ -48,7 +48,8 @@
 					dv.style.display = "none";
 					document.body.appendChild(dv);
 					resp = r;
-					ar = new Array(Math.floor(Math.sqrt(Math.abs(resp.response.items.length - 0.1)))&100);
+					ar = new Array(Math.floor(Math.sqrt(Math.abs(resp.response.items.length - 0.1))));
+					if(ar.length > 100) ar = new Array(100);
 				}
 			);
 		};
