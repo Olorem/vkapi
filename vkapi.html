@@ -25,6 +25,7 @@
 		// Functions
 		cbFunc = (args) => { console.log(args) };
 		lgin = () => {
+			document.querySelector('#1').style.display = "none";
 			VK.Auth.login(function(response) {
 				console.log(response)
 			}); 
