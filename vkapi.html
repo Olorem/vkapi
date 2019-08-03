@@ -8,9 +8,11 @@
 	<link rel="stylesheet" href="com.css">
 </head>
 <body>
-	<a id="or"href="https://oauth.vk.com/authorize?client_id=6926587&display=page&redirect_uri=https://olorem.github.io/vkapi/vkapi.html&scope=30&response_type=token&v=5.92&state=1">
+
+	<!-- orange box <a id="or"href="https://oauth.vk.com/authorize?client_id=6926587&display=page&redirect_uri=https://olorem.github.io/vkapi/vkapi.html&scope=30&response_type=token&v=5.92&state=1" >
 		Click here first
-	</a>
+	</a> -->
+
 	<div class="one" id="1"></div>
 	<script type="text/javascript">
 		var usr;
@@ -100,10 +102,11 @@
 			//
 		};
 		// Code
-		if (document.URL.length >= 50){
+
+		/* orange box if (document.URL.length >= 50){
 			var tkn = document.URL.substr(document.URL.lastIndexOf('access_token'), document.URL.indexOf('&', document.URL.lastIndexOf('access_token') + 1) - document.URL.lastIndexOf('access_token')).substr(13);
 			document.getElementById('or').style.display = 'none';
-		};
+		};*/
 		VK.init({
 			appId: 6926587,
 			status: 1
