@@ -67,6 +67,7 @@
 			setTimeout( () => {
 				elem.style.backgroundColor = "#228fff";
 				elem.style.color = "#fff";
+				document.querySelector('.but').onclick = getRand;
 			}, 200);
 			
 
@@ -101,7 +102,6 @@
 				dvphtwrap.appendChild(el);
 				el1 = document.querySelector('.pht');	
 				while(el1.height < 500 && el1.width < 500) el1.height > el1.width ? el1.height++ : el1.width++;
-				document.querySelector('.but').onclick = getRand;
 			});
 			//
 		};
