@@ -101,7 +101,18 @@
 				dvphtwrap.style.display = "block";
 				dvphtwrap.appendChild(el);
 				el1 = document.querySelector('.pht');	
-				while(el1.height < 500 && el1.width < 500) el1.height > el1.width ? el1.height++ : el1.width++;
+				if(el1.height < 500 && el1.width < 500){
+					if(el1.height > el1.width){
+						let factor = 500/el1.height;
+						el1.heigth *= factor;
+						el1.width  *= factor;
+					}
+					else{
+						let factor = 500/el1.width;
+						el1.heigth *= factor;
+						el1.width  *= factor;
+					}
+				}
 			});
 			//
 		};
