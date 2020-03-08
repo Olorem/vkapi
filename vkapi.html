@@ -35,7 +35,7 @@
 			VK.Api.call('photos.get', {
 				owner_id: usr.id, 
 				album_id: this.id > 0 ? this.id : "saved", 
-				count: 1000, 
+				count: 10000, 
 				v: "5.92"
 				}, 
 				(r) => {
@@ -68,7 +68,7 @@
 				elem.style.backgroundColor = "#228fff";
 				elem.style.color = "#fff";
 				document.querySelector('.but').onclick = getRand;
-			}, 200);
+			}, 1000);
 			
 
 
