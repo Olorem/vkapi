@@ -35,7 +35,8 @@
 			VK.Api.call('photos.get', {
 				owner_id: usr.id, 
 				album_id: this.id > 0 ? this.id : "saved", 
-				count: 10000, 
+				count: 1000, 
+				rev: 1,
 				v: "5.92"
 				}, 
 				(r) => {
