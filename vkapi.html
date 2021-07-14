@@ -130,7 +130,7 @@
 					console.log(r);
   				}
 			});
-			VK.Api.call('photos.getAlbums', {owner_id: usr.id, need_system: 1, v:"5.92"}, (r) => {
+			VK.Api.call('photos.getAlbums', {owner_id: usr.id, need_system: 1, v:"5.131"}, (r) => {
 				for(let i = 1; i < r.response.count; i++){
 					let el = document.createElement('div');
 					el.innerHTML = r.response.items[i].title;
